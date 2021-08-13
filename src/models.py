@@ -8,23 +8,65 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
-class Person(Base):
-    __tablename__ = 'person'
-    # Here we define columns for the table person
-    # Notice that each column is also a normal Python instance attribute.
-    id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
+# class Person(Base):
+#     __tablename__ = 'person'
+#     # Here we define columns for the table person
+#     # Notice that each column is also a normal Python instance attribute.
+#     id = Column(Integer, primary_key=True)
+#     name = Column(String(250), nullable=False)
 
-class Address(Base):
-    __tablename__ = 'address'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
+# class Address(Base):
+#     __tablename__ = 'address'
+#     # Here we define columns for the table address.
+#     # Notice that each column is also a normal Python instance attribute.
+#     id = Column(Integer, primary_key=True)
+#     street_name = Column(String(250))
+#     street_number = Column(String(250))
+#     post_code = Column(String(250), nullable=False)
+#     person_id = Column(Integer, ForeignKey('person.id'))
+#     person = relationship(Person)
+
+class Character(Base):
+    __tablename__ = 'Characters'
     id = Column(Integer, primary_key=True)
-    street_name = Column(String(250))
-    street_number = Column(String(250))
-    post_code = Column(String(250), nullable=False)
-    person_id = Column(Integer, ForeignKey('person.id'))
-    person = relationship(Person)
+    name = Column(String(120), unique=True, nullable=False)
+    height = Column(String(120), unique=True, nullable=False)
+    mass = Column(String(120), unique=True, nullable=False)
+    hair_color = Column(String(120), unique=True, nullable=False)
+    skin_color = Column(String(120), unique=True, nullable=False)
+    eye_color = Column(String(120), unique=True, nullable=False)
+    birth_year = Column(String(120), unique=True, nullable=False)
+    gender = Column(String(120), unique=True, nullable=False)
+
+class Vehicles(Base):
+    __tablename__ = 'Vehicles'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(120), unique=True, nullable=False)
+    Base = Column(String(120), unique=True, nullable=False)
+    manufacturer = Column(String(120), unique=True, nullable=False)
+    cost_in_credits = Column(Integer, primary_key=True)
+    length = Column(Integer, primary_key=True)
+    max_atmosphering_speed = Column(Integer, primary_key=True)
+    crew = Column(String(120), unique=True, nullable=False)
+    passengers = Column(String(120), unique=True, nullable=False)
+    cargo_capacity = Column(Integer, primary_key=True)
+    vehicle_class = Column(String(120), unique=True, nullable=False)
+
+class Starships(Base):
+    __tablename__ = 'Starships'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(120), unique=True, nullable=False)
+    Base = Column(String(120), unique=True, nullable=False)
+    manufacturer = Column(String(120), unique=True, nullable=False)
+    cost_in_credits = Column(Integer, primary_key=True)
+    length = Column(Integer, primary_key=True)
+    max_atmosphering_speed = Column(Integer, primary_key=True)
+    passengers = Column(String(120), unique=True, nullable=False)
+    cargo_capacity = Column(Integer, primary_key=True)
+    consumables = Column(String(120), unique=True, nullable=False)
+    hyperdrive_rating = Column(Integer, primary_key=True)
+    starship_class = Column(String(120), unique=True, nullable=False)
+
 
     def to_dict(self):
         return {}
